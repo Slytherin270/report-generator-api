@@ -1,0 +1,19 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres-auth:5432/${AUTH_DB_NAME:authdb}
+    username: ${AUTH_DB_USER:auth}
+    password: ${AUTH_DB_PASS:auth}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.format_sql: true
+  flyway:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus

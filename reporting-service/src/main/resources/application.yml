@@ -1,0 +1,26 @@
+server:
+  port: 8082
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres-reporting:5432/${REPORT_DB_NAME:reportdb}
+    username: ${REPORT_DB_USER:report}
+    password: ${REPORT_DB_PASS:report}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: ${RABBITMQ_USER:guest}
+    password: ${RABBITMQ_PASS:guest}
+  data:
+    redis:
+      host: redis
+      port: 6379
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus

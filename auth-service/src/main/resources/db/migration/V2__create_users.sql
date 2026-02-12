@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS users (
+  id UUID PRIMARY KEY,
+  org_id UUID NULL REFERENCES organizations(id),
+  role VARCHAR(20) NOT NULL,
+  email VARCHAR(200) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  name VARCHAR(150) NOT NULL,
+  status VARCHAR(20) NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
